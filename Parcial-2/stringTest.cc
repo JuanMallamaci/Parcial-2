@@ -28,19 +28,14 @@ std::string int2string(const int& number)
 	return oss.str();
 }
 
+void UnaCosaLoca(std::string& texto, int& n)
+{
+	std::cout << texto << " -AAAAAAAAAAAAAAAAAA- " << n << std::endl;
+}
+
+
 int main()
 {
-	try{
-	DatClima c;
-	std::cout << "Ingresweee [anio-mes-dia-hora-minuto-velo-temp-humedad-h20]: ";
-	std::cin >> c;
-	std::cout << c << std::endl;
-	}catch (int e)
-	{
-		std::cout << e << std::endl;
-	}
-
-
 	/*
 	int number=7878;
 	std::string test="SSSSS";
