@@ -36,7 +36,7 @@ void UnaCosaLoca(std::string& texto, int& n)
 int main()
 {
 	Menu test;
-
+	test.AddScreen('a', "Este es el menu de prueba", UnaCosaLoca);
 }
 
 int main2()

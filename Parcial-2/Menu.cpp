@@ -6,6 +6,12 @@
  */
 #include "Menu.hpp"
 
+void Menu::AddScreen(const char& key,const std::string& text,  const void (*method))
+{
+	Screen tmp(text, method);
+
+}
+
 
 
 
