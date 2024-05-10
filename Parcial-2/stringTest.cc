@@ -11,7 +11,7 @@
 
 #include "DatClima.hpp"
 #include "Fecha.hpp"
-
+#include "Menu.hpp"
 //Estructura para auxiliar en la lectura de un archivo especializado
 struct Experimento
 {
@@ -33,8 +33,13 @@ void UnaCosaLoca(std::string& texto, int& n)
 	std::cout << texto << " -AAAAAAAAAAAAAAAAAA- " << n << std::endl;
 }
 
-
 int main()
+{
+	Menu test;
+
+}
+
+int main2()
 {
 	/*
 	int number=7878;
