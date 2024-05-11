@@ -28,15 +28,47 @@ std::string int2string(const int& number)
 	return oss.str();
 }
 
-void UnaCosaLoca(std::string& texto, int& n)
+
+
+char Screen0()
 {
-	std::cout << texto << " -AAAAAAAAAAAAAAAAAA- " << n << std::endl;
+	std::cout << "Eliga una opcion:" << std::endl << "1 - Leer por teclado." << std::endl
+			<< "2 - Ingresar por teclado" << std::endl << "0 - Salir" << std::endl;
+
+	char key;
+	std::cin >> key;
+	return key;
+}
+
+char Screen1()
+{
+	std::cout << "Ingrese los datos del dia con la forma: " << std::endl
+			<< "anio-mes-dia-hora-minuto-velocidad viento-temperatura-humedad-mmH20" << std::endl;
+	std::string s;
+	std::cin >> s;
+
+	return 'd';
+}
+
+char Screen2()
+{
+	std::cout << "Ingrese la ruta al archivo completa: ";
+
+	std::string direc;
+	std::cin >> direc;
+
+	return 'd';
 }
 
 int main()
 {
-	Menu test;
-	test.AddScreen('a', "Este es el menu de prueba", UnaCosaLoca);
+	Menu menu;
+	menu.AddScreen('d', Screen0);
+	menu.AddScreen('1', Screen1);
+	menu.AddScreen('2', Screen2);
+
+	menu.LoopScreen('0');
+
 }
 
 int main2()

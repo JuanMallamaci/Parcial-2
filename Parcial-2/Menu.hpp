@@ -11,18 +11,24 @@
 #include <iostream>
 #include <map>
 
-struct Screen
-{
-	void(*action)();
-	std::string text;
-};
+/*
+ *
+ */
+
+
+typedef char(*FuncPtr)();
+char DefScreen();
 
 class Menu
 {
 private:
-	std::map<char,Screen> screens;
+	std::map<char, FuncPtr> screen;
+
 public:
-	Menu();
+	Menu(const char& key = 'd', FuncPtr action = DefScreen) { screen[key] = action; };
+
+	void AddScreen(const char& key, FuncPtr action) { screen[key] = action; };
+	void LoopScreen(const char& exitKey);
 };
 
 
