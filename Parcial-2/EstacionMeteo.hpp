@@ -12,9 +12,11 @@
 class EstacionMeteo
 {
 	private:
-	std::vector<DatClima> lecturas;
+	std::vector<DatClima> lectura;
 	public:
 	EstacionMeteo();
+	int LeerArchivo();
+	int EscribirArchivo();
 
 };
 
