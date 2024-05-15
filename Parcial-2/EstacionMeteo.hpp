@@ -25,7 +25,7 @@ public:
 	/**
 	 *
 	 */
-	void estoProueba();
+	void estoProueba(int a);
 	void SetEstacionMeteo (const DatClima& date) {datos.push_back(date);}
 	EstacionMeteo LecArch(const std::string& ruta , const EstacionMeteo& e);
 };
