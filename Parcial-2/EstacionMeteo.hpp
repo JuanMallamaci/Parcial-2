@@ -17,6 +17,7 @@ class EstacionMeteo
 	EstacionMeteo();
 	int LeerArchivo();
 	int EscribirArchivo();
+	void eso();
 
 };
 
