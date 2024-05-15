@@ -11,13 +11,14 @@
 #include <fstream>
 #include <vector>
 #include "Fecha.hpp"
-
+#include "Hora.hpp"
 
 
 class DatClima
 {
 private:
 	Fecha fecha;
+	Hora hora;
 	float veloViento;
 	float temp;
 	float humedadRela ;
@@ -27,12 +28,14 @@ public:
 	DatClima(const Fecha& f, const float& v, const float& t, const float& h, const float& mm):fecha(f), veloViento(v), temp(t), humedadRela(h), mmH20(mm) {};
 
 	Fecha GetFecha() const { return fecha; }
+	Hora GetHora() const { return hora; }
 	float GetTemp() const { return temp; }
 	float GetVeloViento() const { return veloViento; }
 	float GetHumedadRela() const { return humedadRela; }
 	float GetmmH20() const { return mmH20; }
 
 	void SetFecha(const Fecha& f) { fecha = f; }
+	void SetHora(const Hora& h) { hora = h; }
 	void SetTemp(const float& t) { temp = t; }
 	void SetVeloViento(const float& v) { veloViento = v; }
 	void SetHumedadRela(const float& h) { humedadRela = h; }

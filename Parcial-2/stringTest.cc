@@ -33,7 +33,7 @@ std::string int2string(const int& number)
 char Screen0()
 {
 	std::cout << "Eliga una opcion:" << std::endl << "1 - Leer por teclado." << std::endl
-			<< "2 - Ingresar por teclado" << std::endl << "0 - Salir" << std::endl;
+			<< "2 - Ingresar por teclado la ruta" << std::endl << "0 - Salir" << std::endl;
 
 	char key;
 	std::cin >> key;
@@ -62,6 +62,9 @@ char Screen2()
 
 int main()
 {
+
+	Fecha f1(2020,1,1), f2(2020,1,1);
+	std::cout << "menor mayor: " << (f1 < f2) << " ----- " << (f1 > f2) << std::endl << "Igual !igual: " << (f1 == f2) << " -------- " << (f1 != f2) << std::endl ;
 	Menu menu;
 	menu.AddScreen('d', Screen0);
 	menu.AddScreen('1', Screen1);

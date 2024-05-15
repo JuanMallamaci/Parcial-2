@@ -17,27 +17,33 @@ private:
 	int anio;
 	int mes;
 	int dia;
-	int hora;
-	int min;
 
 	bool fechaValida();
 public:
-	Fecha(): anio(0), mes(0), dia(0), hora(0), min(0) {};
-	Fecha(const int& a, const int& m, const int& d, const int& h, const int& mi);
+	Fecha(): anio(0), mes(0), dia(0){};
+	Fecha(const int& a, const int& m, const int& d);
 
 	int GetAnio () const { return anio; }
 	int GetMes () const { return mes; }
 	int GetDia () const { return dia; }
-	int GetHora () const { return hora; }
-	int GetMin () const { return min; }
 
 	//manejo error
-	void SetFecha (const int& a, const int& m, const int& d, const int& h, const int& mi);
+	void SetFecha (const int& a, const int& m, const int& d);
 	void SetAnio (const int& a);
 	void SetMes (const int& m);
 	void SetDia (const int& d);
-	void SetHora (const int& h);
-	void SetMinuto (const int& m);
+
+	//operadores
+	/**
+	 *
+	 * @param f
+	 * @return
+	 */
+	bool operator< (const Fecha& f);
+	bool operator> (const Fecha& f);
+	bool operator== (const Fecha& f);
+	bool operator!= (const Fecha& f);
+
 };
 
 std::ostream& operator<< (std::ostream& os, const Fecha& f);
