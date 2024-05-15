@@ -10,6 +10,7 @@ CPP_SRCS += \
 ../DatClima.cpp \
 ../EstacionMeteo.cpp \
 ../Fecha.cpp \
+../Hora.cpp \
 ../Menu.cpp 
 
 CC_DEPS += \
@@ -19,12 +20,14 @@ CPP_DEPS += \
 ./DatClima.d \
 ./EstacionMeteo.d \
 ./Fecha.d \
+./Hora.d \
 ./Menu.d 
 
 OBJS += \
 ./DatClima.o \
 ./EstacionMeteo.o \
 ./Fecha.o \
+./Hora.o \
 ./Menu.o \
 ./stringTest.o 
 
@@ -48,7 +51,7 @@ OBJS += \
 clean: clean--2e-
 
 clean--2e-:
-	-$(RM) ./DatClima.d ./DatClima.o ./EstacionMeteo.d ./EstacionMeteo.o ./Fecha.d ./Fecha.o ./Menu.d ./Menu.o ./stringTest.d ./stringTest.o
+	-$(RM) ./DatClima.d ./DatClima.o ./EstacionMeteo.d ./EstacionMeteo.o ./Fecha.d ./Fecha.o ./Hora.d ./Hora.o ./Menu.d ./Menu.o ./stringTest.d ./stringTest.o
 
 .PHONY: clean--2e-
 

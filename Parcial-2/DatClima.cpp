@@ -8,7 +8,7 @@
 
 std::ostream& operator<< (std::ostream& os , const DatClima& d)
 {
-	os << d.GetFecha() << "-" << d.GetVeloViento() << "-" << d.GetTemp() << "-" << d.GetHumedadRela() << "-" << d.GetmmH20();
+	os << d.GetFecha() << d.GetHora() << "-" << "-" << d.GetVeloViento() << "-" << d.GetTemp() << "-" << d.GetHumedadRela() << "-" << d.GetmmH20();
 	return os;
 }
 
@@ -18,8 +18,18 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	Fecha aux;
 	is >> aux;
 	d.SetFecha(aux);
-	is >> deter;
 
+	is >> deter;
+	if( deter != '-')
+	{
+		throw 1;
+	}
+
+	Hora aux1;
+	is >> aux1;
+	d.SetHora(aux1);
+
+	is >> deter;
 	if( deter != '-')
 	{
 		throw 1;
