@@ -10,6 +10,9 @@
 
 #include <iostream>
 #include <iomanip>
+#include <exception>
+
+enum { ANIO_INVALIDO, MES_INVALIDO, DIA_INVALIDO };
 
 class Fecha
 {
@@ -18,7 +21,7 @@ private:
 	int mes;
 	int dia;
 
-	bool fechaValida();
+	void FechaValida();
 public:
 	Fecha(): anio(0), mes(0), dia(0){};
 	Fecha(const int& a, const int& m, const int& d);
@@ -34,11 +37,6 @@ public:
 	void SetDia (const int& d);
 
 	//operadores
-	/**
-	 *
-	 * @param f
-	 * @return
-	 */
 	bool operator< (const Fecha& f);
 	bool operator> (const Fecha& f);
 	bool operator== (const Fecha& f);
@@ -48,6 +46,14 @@ public:
 
 std::ostream& operator<< (std::ostream& os, const Fecha& f);
 std::istream& operator>> (std::istream& is, Fecha& f);
+
+class FechaException: public std::exception
+{
+	int nro;
+public:
+	FechaException(const int& _nro): nro(_nro) {};
+	virtual const char* what() const throw();
+};
 
 
 #endif /* FECHA_HPP_ */
