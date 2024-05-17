@@ -8,6 +8,7 @@
 #include <sstream>
 #include <string>
 #include <fstream> //para manejo de archivos
+#include <exception>
 
 #include "DatClima.hpp"
 #include "Fecha.hpp"
@@ -63,8 +64,27 @@ char Screen2()
 int main()
 {
 
-	Fecha f1(2020,1,1), f2(2020,1,1);
-	std::cout << "menor mayor: " << (f1 < f2) << " ----- " << (f1 > f2) << std::endl << "Igual !igual: " << (f1 == f2) << " -------- " << (f1 != f2) << std::endl ;
+	Fecha f2(2020,1,1);
+
+	try
+	{
+		Fecha f1(2020,2,1);
+		Hora h1;
+		std::ifstream arch("RawDatosEstacionMeteo");
+
+
+		arch >> f1;
+		std::cout << f1;
+		arch >> h1;
+		char a;
+		arch >> a;
+		std::cout << h1;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << "\n";
+	}
+
 	Menu menu;
 	menu.AddScreen('d', Screen0);
 	menu.AddScreen('1', Screen1);
