@@ -63,9 +63,6 @@ char Screen2()
 
 int main()
 {
-
-	Fecha f2(2020,1,1);
-
 	try
 	{
 		Fecha f1(2020,2,1);
@@ -75,14 +72,15 @@ int main()
 
 		arch >> f1;
 		std::cout << f1;
-		arch >> h1;
 		char a;
-		arch >> a;
+				arch >> a;
+		arch >> h1;
+
 		std::cout << h1;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << "\n";
+		std::cout << "\n" << e.what() << "\n";
 	}
 
 	Menu menu;

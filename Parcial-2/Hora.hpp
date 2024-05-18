@@ -11,6 +11,9 @@
 
 #include <iostream>
 #include <iomanip>
+#include <sstream>
+
+enum { HORA_INVALIDA, MIN_INVALIDO };
 
 class Hora
 {
@@ -18,7 +21,7 @@ private:
 	int hora;
 	int min;
 
-	bool HoraValida();
+	void HoraValida();
 public:
 	Hora(): hora(0), min(0) {};
 	Hora(const int& h, const int& mi);
@@ -42,7 +45,13 @@ public:
 std::ostream& operator<< (std::ostream& os, const Hora& f);
 std::istream& operator>> (std::istream& is, Hora& f);
 
-
+class HoraException: public std::exception
+{
+	int nro;
+public:
+	HoraException(const int& _nro): nro(_nro) {};
+	virtual const char* what() const throw();
+};
 
 
 

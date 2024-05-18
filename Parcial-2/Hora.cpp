@@ -14,38 +14,32 @@ Hora::Hora(const int& h, const int& mi)
 	hora = h;
 	min = mi;
 
-	if(!HoraValida())
-	{
-		throw 1;
-	}
-
+	HoraValida();
 }
 
 void Hora::SetHora (const int& h)
 {
 	hora = h;
-	if(!HoraValida())
-	{
-		throw 1;
-	}
+	HoraValida();
 }
 
 void Hora::SetMinuto (const int& m)
 {
 	min = m;
-	if(!HoraValida())
-	{
-		throw 1;
-	}
+	HoraValida();
 }
 
-bool Hora::HoraValida()
+void Hora::HoraValida()
 {
-	if (hora  < 0 || hora > 23 || min < 0 || min > 59)
+	HoraException horaErr(HORA_INVALIDA);
+	HoraException minErr(MIN_INVALIDO);
+	if (hora  < 0 || hora > 23)
 	{
-		return false;
+		throw horaErr;
+	}else if(min < 0 ||  min > 59)
+	{
+		throw minErr;
 	}
-	return true;
 }
 
 bool Hora::operator< (const Hora& f)
@@ -79,16 +73,36 @@ std::ostream& operator<< (std::ostream& os, const Hora& f)
 
 std::istream& operator>> (std::istream& is, Hora& f)
 {
+	int hora, minuto;
 	char delimit;
-	int hora, min;
 
-	//validar
-	is >> hora >> delimit >> min;
+	is >> hora;
+
+	is >> delimit;
+	if( delimit != '-' )
+	{
+		throw std::invalid_argument("Formato de hora incorrecto");
+	}
+
+	is >> minuto;
 
 	f.SetHora(hora);
-	f.SetMinuto(min);
+	f.SetMinuto(minuto);
 
 	return is;
 }
 
+
+const char* HoraException::what() const throw()
+{
+	switch (nro)
+	{
+	case HORA_INVALIDA:
+		return "Error hora invalido";
+	case MIN_INVALIDO:
+		return "Error minutos invalido.";
+	default:
+		return "Este error no fue previsto";
+	}
+}
 
