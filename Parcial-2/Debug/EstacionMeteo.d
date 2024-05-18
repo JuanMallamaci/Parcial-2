@@ -1,1 +1,0 @@
-EstacionMeteo.o: ../EstacionMeteo.cpp
