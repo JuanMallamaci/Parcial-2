@@ -121,13 +121,33 @@ std::istream& operator>> (std::istream& is, Fecha& f)
 	char delimit;
 	int anio, mes, dia;
 
-	//validar
-	is >> anio >> delimit >> mes >> delimit >> dia;
+	is >> anio;
+	is >> delimit;
+	if( delimit != '-' )
+	{
+		throw std::invalid_argument("Formato de fecha incorrecto");
+	}
+
+	is >> mes;
+	is >> delimit;
+	if( delimit != '-' )
+	{
+		throw std::invalid_argument("Formato de fecha incorrecto");
+	}
+
+	is >> dia;
+	is >> delimit;
+	if( delimit != '-' )
+	{
+		throw std::invalid_argument("Formato de fecha incorrecto");
+	}
+
 
 	f.SetFecha(anio, mes, dia);
 
 	return is;
 }
+
 
 const char* FechaException::what() const throw()
 {

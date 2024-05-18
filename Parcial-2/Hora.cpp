@@ -79,14 +79,21 @@ std::ostream& operator<< (std::ostream& os, const Hora& f)
 
 std::istream& operator>> (std::istream& is, Hora& f)
 {
+	int hora, minuto;
 	char delimit;
-	int hora, min;
 
-	//validar
-	is >> hora >> delimit >> min;
+	is >> hora;
+
+	is >> delimit;
+	if( delimit != '-' )
+	{
+		throw std::invalid_argument("Formato de hora incorrecto");
+	}
+
+	is >> minuto;
 
 	f.SetHora(hora);
-	f.SetMinuto(min);
+	f.SetMinuto(minuto);
 
 	return is;
 }
