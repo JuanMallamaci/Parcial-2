@@ -43,9 +43,9 @@ bool Hora::HoraValida()
 {
 	if (hora  < 0 || hora > 23 || min < 0 || min > 59)
 	{
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 }
 
 bool Hora::operator< (const Hora& f)

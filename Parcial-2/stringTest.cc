@@ -64,24 +64,33 @@ char Screen2()
 
 int main()
 {
-
-	Fecha f;
-	std::ifstream arch ("RawDatosEstcionMeteo");
-	arch.is_open();
-	arch >> f;
-	std::cout << f;
-
-	/*try
+	try
 	{
+//
+//		Fecha f1;
+//		Hora h1;
+//		std::ifstream arch("RawDatosEstacionMeteo");
+//		arch >> f1;
+//		std::cout << f1;
+//		char a;
+//		arch >> a;
+//		arch >> h1;
+//		std::cout << h1;
+
+
 		EstacionMeteo e;
 		e.LecArch("RawDatosEstacionMeteo");
 		std::cout << e;
-	}
-	catch (int e)
-	{
-		std::cout << e << "\n";
-	}*/
 
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << "\n";
+	}
+	catch ( int e)
+	{
+		std::cout << "\n" << e;
+	}
 }
 
 int main2()

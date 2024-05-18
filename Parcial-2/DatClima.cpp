@@ -24,9 +24,22 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	std::getline(is,aux);
 	float ult4[4];
 	int cont (0);
+
+//	Fecha f;
+//	Hora h;
+//	float veloViento, temp, humedadRela, mmH20;
+//
+//	is >> f >> a >> h >> a >> veloViento >> a >> temp >> a >> humedadRela >> a >> mmH20;
+//	d.SetFecha(f);
+//	d.SetHora(h);
+//	d.SetTemp(temp);
+//	d.SetVeloViento(veloViento);
+//	d.SetHumedadRela(humedadRela);
+//	d.SetmmH20(mmH20);
+
 	Fecha f;
 	Hora h;
-	is >> f >> a >>h;
+	is >> f >> a >> h;
 	is >> a >> ult4[0] >> a >> ult4[1] >> a >> ult4[2] >> a >> ult4[3];
 	d.SetTemp(ult4[0]);
 	d.SetVeloViento(ult4[1]);
@@ -47,7 +60,7 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	d.SetVeloViento(ult4[1]);
 	d.SetHumedadRela(ult4[2]);
 	d.SetmmH20(ult4[3]);
-	//Lectura de hora y fecha
+//	//Lectura de hora y fecha
 	return is;
 }
 
