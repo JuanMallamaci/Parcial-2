@@ -46,9 +46,4 @@ public:
 std::ostream& operator<< (std::ostream& os , const DatClima& d);
 std::istream& operator>> (std::istream& is , DatClima& d);
 
-
-
-
-
-
 #endif /* DATCLIMA_HPP_ */

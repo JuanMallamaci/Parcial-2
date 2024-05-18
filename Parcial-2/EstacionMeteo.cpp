@@ -7,6 +7,7 @@
 
 #include "EstacionMeteo.hpp"
 #include "DatClima.hpp"
+#include "Hora.hpp"
 #include <fstream>
 
 
@@ -14,20 +15,23 @@ EstacionMeteo::EstacionMeteo(float vel, float t, float mm, int a, int m, int d, 
 {
 
 	        DatClima nuevoDato;
-	        Fecha nuev;
+	        Fecha f;
+	        Hora hs;
 	        nuevoDato.SetVeloViento(vel);
 	        nuevoDato.SetTemp(t);
 	        nuevoDato.SetmmH20(mm);
-	        nuev.SetAnio(a);
-	        nuev.SetMes(m);
-			nuev.SetDia(d);
-			nuev.SetHora(h);
-			nuev.SetMinuto(mn);
-			nuevoDato.SetFecha(nuev);
+	        f.SetAnio(a);
+	        f.SetMes(m);
+			f.SetDia(d);
+			hs.SetHora(h);
+			hs.SetMinuto(mn);
+			nuevoDato.SetHora(hs);
+			nuevoDato.SetFecha(f);
 	        datos.push_back(nuevoDato);
 	    }
 
-std::istream& operator>>(std::istream& in, EstacionMeteo& vec) {
+std::istream& operator>>(std::istream& in, EstacionMeteo& vec)
+{
     DatClima dato;
     // Leer números del archivo hasta que se alcance el final del archivo
     while (in >> dato)
@@ -36,24 +40,30 @@ std::istream& operator>>(std::istream& in, EstacionMeteo& vec) {
     }
     return in;
 }
-EstacionMeteo LecArch(const std::string& ruta , const EstacionMeteo& e)
+std::ostream& operator<< (std::ostream& out, EstacionMeteo& vec)
 {
-	EstacionMeteo aux;
+	std::vector<DatClima>:: iterator it;
+	std::vector<DatClima> aux = vec.GetEstacion();
+
+	for ( it = aux.begin() ; it != aux.end() ; it++)
+	{
+		out << *it << std::endl;
+	}
+	return out;
+}
+ void EstacionMeteo::LecArch(const std::string& ruta)
+{
 	std::ifstream arch(ruta);
-	/*if(!arch.is_open())
+	if(!arch.is_open())
 		{
 			std::cerr << "Error arch" << std::endl;
-			throw 1;
-		}*/
-		while (!arch.eof())
-		{
-			arch >> aux;
+			throw 9;
 		}
-		arch.close();
-
-		return aux;
+	while (!arch.eof())
+	{
+		DatClima tmp;
+		arch >> tmp;
+		this->SetEstacionMeteo(tmp);
 	}
-
-
-
-
+		arch.close();
+}

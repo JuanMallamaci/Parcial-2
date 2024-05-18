@@ -13,6 +13,7 @@
 #include "DatClima.hpp"
 #include "Fecha.hpp"
 #include "Menu.hpp"
+#include "EstacionMeteo.hpp"
 //Estructura para auxiliar en la lectura de un archivo especializado
 struct Experimento
 {
@@ -64,33 +65,22 @@ char Screen2()
 int main()
 {
 
-	Fecha f2(2020,1,1);
+	Fecha f;
+	std::ifstream arch ("RawDatosEstcionMeteo");
+	arch.is_open();
+	arch >> f;
+	std::cout << f;
 
-	try
+	/*try
 	{
-		Fecha f1(2020,2,1);
-		Hora h1;
-		std::ifstream arch("RawDatosEstacionMeteo");
-
-
-		arch >> f1;
-		std::cout << f1;
-		arch >> h1;
-		char a;
-		arch >> a;
-		std::cout << h1;
+		EstacionMeteo e;
+		e.LecArch("RawDatosEstacionMeteo");
+		std::cout << e;
 	}
-	catch (std::exception& e)
+	catch (int e)
 	{
-		std::cout << e.what() << "\n";
-	}
-
-	Menu menu;
-	menu.AddScreen('d', Screen0);
-	menu.AddScreen('1', Screen1);
-	menu.AddScreen('2', Screen2);
-
-	menu.LoopScreen('0');
+		std::cout << e << "\n";
+	}*/
 
 }
 

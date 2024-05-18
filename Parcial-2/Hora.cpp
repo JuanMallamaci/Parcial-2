@@ -16,7 +16,7 @@ Hora::Hora(const int& h, const int& mi)
 
 	if(!HoraValida())
 	{
-		throw 1;
+		throw 4;
 	}
 
 }
@@ -26,7 +26,7 @@ void Hora::SetHora (const int& h)
 	hora = h;
 	if(!HoraValida())
 	{
-		throw 1;
+		throw 2;
 	}
 }
 
@@ -35,7 +35,7 @@ void Hora::SetMinuto (const int& m)
 	min = m;
 	if(!HoraValida())
 	{
-		throw 1;
+		throw 3;
 	}
 }
 
@@ -43,9 +43,9 @@ bool Hora::HoraValida()
 {
 	if (hora  < 0 || hora > 23 || min < 0 || min > 59)
 	{
-		return false;
+		return true;
 	}
-	return true;
+	return false;
 }
 
 bool Hora::operator< (const Hora& f)

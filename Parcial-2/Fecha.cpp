@@ -34,8 +34,7 @@ void Fecha::SetAnio (const int& a)
 void Fecha::SetMes (const int& m)
 {
 	mes = m;
-	FechaException mesErr(MES_INVALIDO);
-
+	//FechaException mesErr(MES_INVALIDO);
 	FechaValida();
 }
 
@@ -144,5 +143,3 @@ const char* FechaException::what() const throw()
 		return "Error";
 	}
 }
-
-
