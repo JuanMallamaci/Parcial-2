@@ -17,7 +17,6 @@ Fecha::Fecha(const int& a, const int& m, const int& d)
 
 void Fecha::SetFecha (const int& a, const int& m, const int& d)
 {
-	//manejo error
 	anio = a;
 	mes = m;
 	dia = d;
@@ -34,7 +33,6 @@ void Fecha::SetAnio (const int& a)
 void Fecha::SetMes (const int& m)
 {
 	mes = m;
-	//FechaException mesErr(MES_INVALIDO);
 	FechaValida();
 }
 
@@ -63,20 +61,7 @@ void Fecha::FechaValida()
 		throw diaErr;
 	}
 }
-/*
-bool Fecha::fechaValida()
-{
-	if (anio < 0 || mes < 1 || mes > 12 || dia < 1)
-	{
 
-		return false;
-	}
-
-
-
-	return ( dia <= diaEnMes[mes - 1] );
-}
-*/
 bool Fecha::operator< (const Fecha& f)
 {
 
