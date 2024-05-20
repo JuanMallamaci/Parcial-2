@@ -97,7 +97,7 @@ bool Fecha::operator!= (const Fecha& f)
 std::ostream& operator<< (std::ostream& os, const Fecha& f)
 {
 	os << std::setw(4) << std::setfill('0') << f.GetAnio() << "-" << std::setw(2) << std::setfill('0') << f.GetMes()
-					<< "-" << std::setw(2) << std::setfill('0') << f.GetDia();
+					<< "-" << std::setw(2) << std::setfill('0') << f.GetDia() << "-";
 	return os;
 }
 
@@ -110,7 +110,7 @@ std::istream& operator>> (std::istream& is, Fecha& f)
 	is >> delimit;
 	if( delimit != '-' )
 	{
-		throw std::invalid_argument("Formato de fecha incorrecto");
+		throw std::invalid_argument("Formato de fecha incorrecto 1");
 	}
 
 	is >> mes;
@@ -124,7 +124,7 @@ std::istream& operator>> (std::istream& is, Fecha& f)
 	is >> delimit;
 	if( delimit != '-' )
 	{
-		throw std::invalid_argument("Formato de fecha incorrecto");
+		throw std::invalid_argument("Formato de fecha incorrecto ");
 	}
 
 
