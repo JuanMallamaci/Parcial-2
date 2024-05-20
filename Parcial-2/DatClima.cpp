@@ -21,16 +21,6 @@ bool DatClima::operator < (const DatClima& date)
 	{
 		return (hora < date.GetHora());
 	}
-
-//
-//	if(fecha < date.GetFecha())
-//	{
-//		return true;
-//	}else if (this->fecha == date.GetFecha()){
-//		if (this->hora < date.GetHora()) return true;
-//	}
-//	return false;
-
 }
 
 std::ostream& operator<< (std::ostream& os , const DatClima& d)

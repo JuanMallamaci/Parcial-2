@@ -31,6 +31,7 @@ void EstacionMeteo::SetDatos(float vel, float t, float mm, float hum, int a, int
 
 	datos.push_back(nuevoDato);
 }
+
 std::vector<DatClima> EstacionMeteo::RmEstacion(const int& idx)
 {
 	if(idx < datos.size())
@@ -41,7 +42,7 @@ std::vector<DatClima> EstacionMeteo::RmEstacion(const int& idx)
 	return datos;
 }
 
-void EstacionMeteo::LecArch(const std::string& ruta)
+void EstacionMeteo::LeeArch(const std::string& ruta)
 {
 	std::ifstream arch(ruta);
 
@@ -57,7 +58,7 @@ void EstacionMeteo::LecArch(const std::string& ruta)
 		arch >> tmp;
 		this->SetEstacionMeteo(tmp);
 	}
-		arch.close();
+	arch.close();
 }
 
 std::istream& operator>>(std::istream& in, EstacionMeteo& vec)
