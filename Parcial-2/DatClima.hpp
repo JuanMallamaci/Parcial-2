@@ -25,7 +25,7 @@ private:
 	float mmH20;
 public:
 	DatClima ():fecha(), veloViento(0),temp(0), humedadRela(0), mmH20(0) {};
-	DatClima(const Fecha& f, const float& v, const float& t, const float& h, const float& mm):fecha(f), veloViento(v), temp(t), humedadRela(h), mmH20(mm) {};
+	DatClima(const Fecha& f, const Hora& hs, const float& v, const float& t, const float& h, const float& mm):fecha(f), hora (hs), veloViento(v), temp(t), humedadRela(h), mmH20(mm) {};
 
 	Fecha GetFecha() const { return fecha; }
 	Hora GetHora() const { return hora; }
@@ -40,6 +40,10 @@ public:
 	void SetVeloViento(const float& v) { veloViento = v; }
 	void SetHumedadRela(const float& h) { humedadRela = h; }
 	void SetmmH20(const float& h) { mmH20 = h; }
+
+	//operadores
+	bool operator< (const DatClima& date);
+	//bool operator> (const DatClima& date) {return !(this < date);}
 
 };
 

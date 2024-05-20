@@ -83,7 +83,6 @@ std::istream& operator>> (std::istream& is, Hora& f)
 	char delimit;
 
 	is >> hora;
-
 	is >> delimit;
 	if( delimit != '-' )
 	{
@@ -91,6 +90,11 @@ std::istream& operator>> (std::istream& is, Hora& f)
 	}
 
 	is >> minuto;
+	is >> delimit;
+	if( delimit != '-' )
+	{
+		throw std::invalid_argument("Formato de hora incorrecto");
+	}
 
 	f.SetHora(hora);
 	f.SetMinuto(minuto);
