@@ -34,13 +34,12 @@ Main::Main()
 
 	EstacionMeteo estacion;
 
-	estacion.LeeArch("RawDatosEstacionMeteo");
+	estacion.LeeArch("lecturaDatos");
 	estacion.OrdenaDatos();
 
 	std::vector<DatClima> datoTmp;
 	datoTmp = estacion.GetEstacion();
 	int aux = estacion.GetCantDatos();
-	std::cout << aux << "\n\n";
 
 	std::string nombreFile;
 	std::stringstream ss;
@@ -62,14 +61,15 @@ void LecturaTeclado()
 	const std::string strExit("SALIR");
 	std::string strTmp;
 
-	std::cout  << "Para filanizar la lectura ingrese SALIR \n" << std::endl;
+	std::cout  << "Para filanizar la lectura ingrese SALIR \n" << "Ingrese los datos del dia con la forma: " <<
+				"anio-mes-dia-hora-minuto-velocidad viento-temperatura-humedad-mmH20" << std::endl;
 	std::cin >> strTmp;
 
 	while(strExit != strTmp)
 	{
 		arch << strTmp << std::endl;
-		std::cout  << "Para filanizar la lectura ingrese SALIR \n" << "Ingrese los datos del dia con la forma: " << std::endl
-				<< "anio-mes-dia-hora-minuto-velocidad viento-temperatura-humedad-mmH20" << std::endl;
+		std::cout  << "Para filanizar la lectura ingrese SALIR \n" << "Ingrese los datos del dia con la forma: " <<
+						"anio-mes-dia-hora-minuto-velocidad viento-temperatura-humedad-mmH20" << std::endl;
 		std::cin >> strTmp;
 	}
 	arch.close();
@@ -90,12 +90,13 @@ void LecturaArch()
 	}
 
 	std::ofstream archWrite("lecturaDatos");
-	while (!arch.eof())
-	{
-		std::string strTmp;
 
-		arch >> strTmp;
-		archWrite << strTmp << std::endl;
+	std::string strTmp;
+	std::getline(arch, strTmp);
+	archWrite << strTmp;
+	while (std::getline(arch, strTmp))
+	{
+		archWrite << std::endl <<strTmp;
 	}
 	archWrite.close();
 	arch.close();
