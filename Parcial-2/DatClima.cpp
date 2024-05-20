@@ -53,15 +53,20 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	Fecha f;
 	Hora h;
 	is >> f;
+	d.SetFecha(f);
 	is >> h;
+	d.SetHora(h);
 	is >> veloViento >> a;
+	d.SetVeloViento(veloViento);
 	if(a != delim) throw std::invalid_argument("Error en datos climaticos");
 	is >> temp >> a;
+	d.SetTemp(temp);
 	if(a != delim) throw std::invalid_argument("Error en datos climaticos");
 	is >> humedadRela >> a;
+	d.SetHumedadRela(humedadRela);
 	if(a != delim) throw std::invalid_argument("Error en datos climaticos");
 	is >> mmH20;
-	DatClima(f,h,veloViento,temp,humedadRela,mmH20);
+	d.SetmmH20(mmH20);
 
 	return is;
 }
