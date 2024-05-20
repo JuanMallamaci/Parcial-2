@@ -121,12 +121,6 @@ std::istream& operator>> (std::istream& is, Fecha& f)
 	}
 
 	is >> dia;
-	is >> delimit;
-	if( delimit != '-' )
-	{
-		throw std::invalid_argument("Formato de fecha incorrecto ");
-	}
-
 
 	f.SetFecha(anio, mes, dia);
 

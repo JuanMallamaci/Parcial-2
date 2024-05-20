@@ -10,22 +10,25 @@
 #include "Hora.hpp"
 #include <fstream>
 
-void EstacionMeteo::Datos(float vel, float t, float mm, float hum, int a, int m, int d, int h, int mn)
+
+void EstacionMeteo::SetDatos(float vel, float t, float mm, float hum, int a, int m, int d, int h, int mn)
 {
 	DatClima nuevoDato;
 	Fecha f;
 	Hora hs;
+
 	nuevoDato.SetVeloViento(vel);
 	nuevoDato.SetTemp(t);
 	nuevoDato.SetmmH20(mm);
 	nuevoDato.SetHumedadRela(hum);
-	f.SetAnio(a);
-	f.SetMes(m);
-	f.SetDia(d);
+
+	f.SetFecha(a, m, d);
+	nuevoDato.SetFecha(f);
+
 	hs.SetHora(h);
 	hs.SetMinuto(mn);
 	nuevoDato.SetHora(hs);
-	nuevoDato.SetFecha(f);
+
 	datos.push_back(nuevoDato);
 }
 
