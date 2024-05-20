@@ -31,15 +31,26 @@ void EstacionMeteo::SetDatos(float vel, float t, float mm, float hum, int a, int
 
 	datos.push_back(nuevoDato);
 }
+std::vector<DatClima> EstacionMeteo::RmEstacion(const int& idx)
+{
+	if(idx < datos.size())
+	{
+		datos.erase(datos.begin() + idx);
+	}
+
+	return datos;
+}
 
 void EstacionMeteo::LecArch(const std::string& ruta)
 {
 	std::ifstream arch(ruta);
+
 	if(!arch.is_open())
-		{
-			std::cerr << "Error arch" << std::endl;
-			throw 9;
-		}
+	{
+		std::cerr << "Error arch" << std::endl;
+		throw 9;
+	}
+
 	while (!arch.eof())
 	{
 		DatClima tmp;
@@ -52,11 +63,14 @@ void EstacionMeteo::LecArch(const std::string& ruta)
 std::istream& operator>>(std::istream& in, EstacionMeteo& vec)
 {
     DatClima dato;
-    // Leer números del archivo hasta que se alcance el final del archivo
-    while (in >> dato)
-    {
-    	vec.SetEstacionMeteo(dato);
-    }
+
+    in >> dato;
+    vec.SetEstacionMeteo(dato);
+
+//    while (in >> dato)
+//    {
+//    	vec.SetEstacionMeteo(dato);
+//    }
     return in;
 }
 

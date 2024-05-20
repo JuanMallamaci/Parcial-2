@@ -97,7 +97,7 @@ bool Fecha::operator!= (const Fecha& f)
 std::ostream& operator<< (std::ostream& os, const Fecha& f)
 {
 	os << std::setw(4) << std::setfill('0') << f.GetAnio() << "-" << std::setw(2) << std::setfill('0') << f.GetMes()
-					<< "-" << std::setw(2) << std::setfill('0') << f.GetDia() << "-";
+					<< "-" << std::setw(2) << std::setfill('0') << f.GetDia();
 	return os;
 }
 

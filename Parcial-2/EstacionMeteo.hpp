@@ -27,6 +27,9 @@ public:
 	std::vector<DatClima> GetEstacion() const {return datos;}
 
 	void SetDatos(float vel, float t, float mm, float hum, int a, int m, int d, int h, int mn);
+	void ClearEstacion() { datos.clear();}
+	std::vector<DatClima> RmEstacion(const int& idx);
+
 	void LecArch(const std::string& ruta);
 	void OrdenaDatos(){std::sort(datos.begin(),datos.end());}
 };
