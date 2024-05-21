@@ -16,6 +16,11 @@
 
 #include "EstacionMeteo.hpp"
 
+/**
+ * @class Main
+ * @brief
+ * Espera una entrada por teclado o archivo de texto, para luego guardarlas ordenadas por la velociadad de viento
+ */
 class Main
 {
 public:

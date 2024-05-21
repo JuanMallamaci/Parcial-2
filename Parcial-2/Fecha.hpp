@@ -2,7 +2,7 @@
  * Fecha.hpp
  *
  *  Created on: May 3, 2024
- *      Author: pc1
+ *      Author: Mallamaci, Pelayes
  */
 
 #ifndef FECHA_HPP_
@@ -114,7 +114,7 @@ public:
 	 * @fn bool operator <(const Fecha&)
 	 * @brief
 	 *	Sobrecarga de operador menor
-	 * @param f
+	 * @param f fecha
 	 * @return
 	 */
 	bool operator< (const Fecha& f);
@@ -123,7 +123,7 @@ public:
 	 * @fn bool operator >(const Fecha&)
 	 * @brief
 	 *	Sobrecarga operador mayor
-	 * @param f
+	 * @param f fecha
 	 * @return
 	 */
 	bool operator> (const Fecha& f);
@@ -132,7 +132,7 @@ public:
 	 * @fn bool operator ==(const Fecha&)
 	 * @brief
 	 *	Sobrecarga de operador de igualidad
-	 * @param f
+	 * @param f fecha
 	 * @return
 	 */
 	bool operator== (const Fecha& f);
@@ -141,7 +141,7 @@ public:
 	 * @fn bool operator !=(const Fecha&)
 	 * @brief
 	 *	Sobrecarga de operador de desigual
-	 * @param f
+	 * @param f fecha
 	 * @return
 	 */
 	bool operator!= (const Fecha& f);
@@ -150,18 +150,18 @@ public:
 
 /**
  * @brief
- * 	Escribe con el formato anio-mes-dia
+ * 	Escribe fecha con el formato anio-mes-dia
  * @param os
- * @param f
+ * @param f fecha
  * @return
  */
 std::ostream& operator<< (std::ostream& os, const Fecha& f);
 
 /**
  * @brief
- * Espera el formato anio-mes-dia
+ * Lee hora con formato anio-mes-dia
  * @param is
- * @param f
+ * @param f fecha
  * @return
  */
 std::istream& operator>> (std::istream& is, Fecha& f);

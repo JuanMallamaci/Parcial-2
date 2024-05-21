@@ -2,7 +2,7 @@
  * Fecha.cpp
  *
  *  Created on: May 3, 2024
- *      Author: pc1
+ *      Author: Mallamaci, Pelayes
  */
 #include "Fecha.hpp"
 
@@ -139,6 +139,6 @@ const char* FechaException::what() const throw()
 	case ANIO_INVALIDO:
 		return "Error anio invalido";
 	default:
-		return "Error";
+		return "Error no contemplado en Fecha";
 	}
 }

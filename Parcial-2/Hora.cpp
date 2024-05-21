@@ -2,7 +2,7 @@
  * Hora.cpp
  *
  *  Created on: May 15, 2024
- *      Author: pc1
+ *      Author: Mallamaci, Pelayes
  */
 
 #include "Hora.hpp"
@@ -14,38 +14,29 @@ Hora::Hora(const int& h, const int& mi)
 	hora = h;
 	min = mi;
 
-	if(!HoraValida())
-	{
-		throw 4;
-	}
-
+	HoraValida();
 }
 
 void Hora::SetHora (const int& h)
 {
 	hora = h;
-	if(!HoraValida())
-	{
-		throw 2;
-	}
+	HoraValida();
 }
 
 void Hora::SetMinuto (const int& m)
 {
 	min = m;
-	if(!HoraValida())
-	{
-		throw 3;
-	}
+	HoraValida();
 }
 
-bool Hora::HoraValida()
+void Hora::HoraValida()
 {
+	HoraException Err(HORA_INVALIDA);
+
 	if (hora  < 0 || hora > 23 || min < 0 || min > 59)
 	{
-		return false;
+		throw Err;
 	}
-	return true;
 }
 
 bool Hora::operator< (const Hora& f)
@@ -98,4 +89,14 @@ std::istream& operator>> (std::istream& is, Hora& f)
 	return is;
 }
 
+const char* HoraException::what() const throw()
+{
+	switch (nro)
+	{
+	case HORA_INVALIDA:
+		return "Error hora invalida";
+	default:
+		return "Error no contemplado en Hora";
+	}
+}
 
