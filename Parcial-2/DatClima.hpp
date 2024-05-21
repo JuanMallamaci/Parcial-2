@@ -13,7 +13,11 @@
 #include "Fecha.hpp"
 #include "Hora.hpp"
 
-
+/**
+ * @class DatClima
+ * @brief
+ * Almacena datos del clima
+ */
 class DatClima
 {
 private:

@@ -15,6 +15,11 @@
 #include <string>
 #include <algorithm>
 
+/**
+ * @class EstacionMeteo
+ * @brief
+ * Contiente datos climaticos, permite ordenamiento, lecuta y escritura
+ */
 class EstacionMeteo
 {
 private:

@@ -113,7 +113,7 @@ public:
 	/**
 	 * @fn bool operator <(const Fecha&)
 	 * @brief
-	 *
+	 *	Sobrecarga de operador menor
 	 * @param f
 	 * @return
 	 */
@@ -122,7 +122,7 @@ public:
 	/**
 	 * @fn bool operator >(const Fecha&)
 	 * @brief
-	 *
+	 *	Sobrecarga operador mayor
 	 * @param f
 	 * @return
 	 */
@@ -131,7 +131,7 @@ public:
 	/**
 	 * @fn bool operator ==(const Fecha&)
 	 * @brief
-	 *
+	 *	Sobrecarga de operador de igualidad
 	 * @param f
 	 * @return
 	 */
@@ -140,7 +140,7 @@ public:
 	/**
 	 * @fn bool operator !=(const Fecha&)
 	 * @brief
-	 *
+	 *	Sobrecarga de operador de desigual
 	 * @param f
 	 * @return
 	 */
@@ -148,14 +148,29 @@ public:
 
 };
 
+/**
+ * @brief
+ * 	Escribe con el formato anio-mes-dia
+ * @param os
+ * @param f
+ * @return
+ */
 std::ostream& operator<< (std::ostream& os, const Fecha& f);
+
+/**
+ * @brief
+ * Espera el formato anio-mes-dia
+ * @param is
+ * @param f
+ * @return
+ */
 std::istream& operator>> (std::istream& is, Fecha& f);
 
 
 /**
  * @class FechaException
  * @brief
- *
+ * Manejo de exepciones
  */
 class FechaException: public std::exception
 {
@@ -164,14 +179,14 @@ public:
 	/**
 	 * @fn  FechaException(const int&)
 	 * @brief
-	 *
+	 * Constructor asigna la exepcion
 	 * @param _nro
 	 */
 	FechaException(const int& _nro): nro(_nro) {};
 	/**
 	 * @fn const char what*()const throw ()
 	 * @brief
-	 *
+	 * Manejo de exepciones
 	 * @return
 	 */
 	virtual const char* what() const throw();
