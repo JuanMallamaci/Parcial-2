@@ -17,7 +17,6 @@ Fecha::Fecha(const int& a, const int& m, const int& d)
 
 void Fecha::SetFecha (const int& a, const int& m, const int& d)
 {
-	//manejo error
 	anio = a;
 	mes = m;
 	dia = d;
@@ -34,7 +33,6 @@ void Fecha::SetAnio (const int& a)
 void Fecha::SetMes (const int& m)
 {
 	mes = m;
-	//FechaException mesErr(MES_INVALIDO);
 	FechaValida();
 }
 
@@ -63,20 +61,7 @@ void Fecha::FechaValida()
 		throw diaErr;
 	}
 }
-/*
-bool Fecha::fechaValida()
-{
-	if (anio < 0 || mes < 1 || mes > 12 || dia < 1)
-	{
 
-		return false;
-	}
-
-
-
-	return ( dia <= diaEnMes[mes - 1] );
-}
-*/
 bool Fecha::operator< (const Fecha& f)
 {
 
@@ -112,7 +97,7 @@ bool Fecha::operator!= (const Fecha& f)
 std::ostream& operator<< (std::ostream& os, const Fecha& f)
 {
 	os << std::setw(4) << std::setfill('0') << f.GetAnio() << "-" << std::setw(2) << std::setfill('0') << f.GetMes()
-					<< "-" << std::setw(2) << std::setfill('0') << f.GetDia() << "-";
+					<< "-" << std::setw(2) << std::setfill('0') << f.GetDia();
 	return os;
 }
 
@@ -136,12 +121,6 @@ std::istream& operator>> (std::istream& is, Fecha& f)
 	}
 
 	is >> dia;
-	is >> delimit;
-	if( delimit != '-' )
-	{
-		throw std::invalid_argument("Formato de fecha incorrecto ");
-	}
-
 
 	f.SetFecha(anio, mes, dia);
 

@@ -13,13 +13,13 @@
 
 bool DatClima::operator < (const DatClima& date)
 {
-	if(fecha < date.GetFecha())
+	if(fecha != date.GetFecha())
 	{
-		return true;
-	}else if (this->fecha == date.GetFecha()){
-		if (this->hora < date.GetHora()) return true;
-}
-	return false;
+		return (fecha < date.GetFecha());
+	}else
+	{
+		return (hora < date.GetHora());
+	}
 }
 
 std::ostream& operator<< (std::ostream& os , const DatClima& d)
@@ -31,40 +31,50 @@ std::ostream& operator<< (std::ostream& os , const DatClima& d)
 std::istream& operator>> (std::istream& is , DatClima& d)
 {
 	const char delim ('-');
-	char a;
-	std::string aux;
-	std::getline(is,aux);
-	float veloViento,temp,humedadRela,mmH20;
-	int cont (0);
-
-
-/*	Fecha f;
-	Hora h;
-	float veloViento, temp, humedadRela, mmH20;
-
-	is >> f >> a >> h >> a >> veloViento >> a >> temp >> a >> humedadRela >> a >> mmH20;
-	d.SetFecha(f);
-	d.SetHora(h);
-	d.SetTemp(temp);
-	d.SetVeloViento(veloViento);
-	d.SetHumedadRela(humedadRela);
-	d.SetmmH20(mmH20); */
+	char aux;
 
 	Fecha f;
-	Hora h;
-	is >> f;
+	is >> f >> aux;
+	if(aux != delim)
+	{
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
+	}
 	d.SetFecha(f);
-	is >> h;
+
+	Hora h;
+	is >> h >> aux;
+	if(aux != delim)
+	{
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
+	}
 	d.SetHora(h);
-	is >> veloViento >> a;
+
+	float veloViento;
+	is >> veloViento >> aux;
+	if(aux != delim)
+	{
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
+	}
 	d.SetVeloViento(veloViento);
-	if(a != delim) throw std::invalid_argument("Error en datos climaticos");
-	is >> temp >> a;
+
+
+	float temp;
+	is >> temp >> aux;
+	if(aux != delim)
+	{
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
+	}
 	d.SetTemp(temp);
-	if(a != delim) throw std::invalid_argument("Error en datos climaticos");
-	is >> humedadRela >> a;
+
+	float humedadRela;
+	is >> humedadRela >> aux;
+	if(aux != delim)
+	{
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
+	}
 	d.SetHumedadRela(humedadRela);
-	if(a != delim) throw std::invalid_argument("Error en datos climaticos");
+
+	float mmH20;
 	is >> mmH20;
 	d.SetmmH20(mmH20);
 

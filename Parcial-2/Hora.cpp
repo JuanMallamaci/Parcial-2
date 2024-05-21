@@ -52,7 +52,8 @@ bool Hora::operator< (const Hora& f)
 {
 	int aux;
 	aux = (min + hora*60) - (f.GetMin() + f.GetHora()*60);
-	return (aux > 0);
+//	return (aux > 0);
+	return ((min + hora*60) < (f.GetMin() + f.GetHora()*60));
 }
 
 bool Hora::operator> (const Hora& f)
@@ -90,11 +91,6 @@ std::istream& operator>> (std::istream& is, Hora& f)
 	}
 
 	is >> minuto;
-	is >> delimit;
-	if( delimit != '-' )
-	{
-		throw std::invalid_argument("Formato de hora incorrecto");
-	}
 
 	f.SetHora(hora);
 	f.SetMinuto(minuto);

@@ -10,50 +10,83 @@
 #include "Hora.hpp"
 #include <fstream>
 
-void EstacionMeteo::Datos(float vel, float t, float mm, float hum, int a, int m, int d, int h, int mn)
+
+void EstacionMeteo::SetDatos(float vel, float t, float mm, float hum, int a, int m, int d, int h, int mn)
 {
 	DatClima nuevoDato;
 	Fecha f;
 	Hora hs;
+
 	nuevoDato.SetVeloViento(vel);
 	nuevoDato.SetTemp(t);
 	nuevoDato.SetmmH20(mm);
 	nuevoDato.SetHumedadRela(hum);
-	f.SetAnio(a);
-	f.SetMes(m);
-	f.SetDia(d);
+
+	f.SetFecha(a, m, d);
+	nuevoDato.SetFecha(f);
+
 	hs.SetHora(h);
 	hs.SetMinuto(mn);
 	nuevoDato.SetHora(hs);
-	nuevoDato.SetFecha(f);
+
 	datos.push_back(nuevoDato);
 }
 
-void EstacionMeteo::LecArch(const std::string& ruta)
+std::vector<DatClima> EstacionMeteo::RmEstacion(const int& idx)
+{
+	if(idx < datos.size())
+	{
+		datos.erase(datos.begin() + idx); //validar rango
+	}
+
+	return datos;
+}
+
+void EstacionMeteo::LeeArch(const std::string& ruta)
 {
 	std::ifstream arch(ruta);
+
 	if(!arch.is_open())
-		{
-			std::cerr << "Error arch" << std::endl;
-			throw 9;
-		}
+	{
+		std::cerr << "Error arch" << std::endl;
+		throw 9;
+	}
+
 	while (!arch.eof())
 	{
 		DatClima tmp;
 		arch >> tmp;
 		this->SetEstacionMeteo(tmp);
 	}
-		arch.close();
+	arch.close();
+}
+void EstacionMeteo::WriteFile(const std::string& ruta)
+{
+	std::ofstream arch(ruta);
+	if(!arch.is_open())
+	{
+		std::cerr << "Error abriendo archivo \n";
+	}
+	std::vector<DatClima>:: iterator ite;
+	for(ite = datos.begin() ; ite != datos.end() ; ite++)
+	{
+		arch << *ite ;
+		if(ite != datos.end()-1)  arch << std::endl;
+	}
+	arch.close();
 }
 
 std::istream& operator>>(std::istream& in, EstacionMeteo& vec)
 {
     DatClima dato;
-    // Leer números del archivo hasta que se alcance el final del archivo
-    while (in >> dato)
-    {
-    	vec.SetEstacionMeteo(dato);
-    }
+
+    in >> dato;
+    vec.SetEstacionMeteo(dato);
+
+//    while (in >> dato)
+//    {
+//    	vec.SetEstacionMeteo(dato);
+//    }
     return in;
 }
 
