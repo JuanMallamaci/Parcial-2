@@ -71,7 +71,7 @@ void EstacionMeteo::WriteFile(const std::string& ruta)
 	for(ite = datos.begin() ; ite != datos.end() ; ite++)
 	{
 		arch << *ite ;
-		if(ite != datos.end()-1)  arch << std::endl;
+		if(ite != datos.end()-1)  arch << std::endl; // valida si es el ultimo para no agregar un \n de mas
 	}
 	arch.close();
 }

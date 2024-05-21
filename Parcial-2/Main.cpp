@@ -100,7 +100,7 @@ void FileFin()
 	datoTmp = estacion.GetEstacion();
 	std::string nombre = Name (datoTmp);
 
-	estacion.OrdenaDatosV();
+	estacion.OrdenaDatosViento();
 	estacion.WriteFile(nombre);
 }
 std::string Name(std::vector<DatClima>& date)

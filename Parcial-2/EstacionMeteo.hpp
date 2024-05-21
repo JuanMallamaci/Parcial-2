@@ -36,7 +36,7 @@ public:
 	void WriteFile(const std::string& ruta);
 	void OrdenaDatos(){std::sort(datos.begin(),datos.end());}
 	static bool ComparaVelViento(const DatClima& a, const DatClima& b){return 	!(a.GetVeloViento() < b.GetVeloViento());}
-	void OrdenaDatosV(){std::sort(datos.begin(),datos.end(),ComparaVelViento);}
+	void OrdenaDatosViento(){std::sort(datos.begin(),datos.end(),ComparaVelViento);}
 };
 std::istream& operator>>(std::istream& in,  EstacionMeteo& vec);
 std::ostream& operator<< (std::ostream& out, EstacionMeteo& vec);
