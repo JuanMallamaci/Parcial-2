@@ -10,28 +10,6 @@
 #include "Hora.hpp"
 #include <fstream>
 
-
-void EstacionMeteo::SetDatos(float vel, float t, float mm, float hum, int a, int m, int d, int h, int mn)
-{
-	DatClima nuevoDato;
-	Fecha f;
-	Hora hs;
-
-	nuevoDato.SetVeloViento(vel);
-	nuevoDato.SetTemp(t);
-	nuevoDato.SetmmH20(mm);
-	nuevoDato.SetHumedadRela(hum);
-
-	f.SetFecha(a, m, d);
-	nuevoDato.SetFecha(f);
-
-	hs.SetHora(h);
-	hs.SetMinuto(mn);
-	nuevoDato.SetHora(hs);
-
-	datos.push_back(nuevoDato);
-}
-
 std::vector<DatClima> EstacionMeteo::RmEstacion(const int& idx)
 {
 	if(idx < datos.size())
@@ -62,7 +40,7 @@ void EstacionMeteo::LeeArch(const std::string& ruta)
 
 }
 
-void EstacionMeteo::WriteFile(const std::string& ruta)
+void EstacionMeteo::EscribeArch(const std::string& ruta)
 {
 	std::ofstream arch(ruta);
 	if(!arch.is_open())

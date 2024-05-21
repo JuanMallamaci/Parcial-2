@@ -7,9 +7,8 @@
 #include "Main.hpp"
 void LecturaTeclado();
 void LecturaArch();
-
-void FileFin();
-std::string Name(std::vector<DatClima>& date);
+void GeneraArchFinal();
+std::string GeneraNombre(std::vector<DatClima>& date);
 
 
 Main::Main()
@@ -36,7 +35,7 @@ Main::Main()
 		}
 	}
 
-	FileFin();
+	GeneraArchFinal();
 }
 
 void LecturaTeclado()
@@ -69,8 +68,6 @@ void LecturaArch()
 {
 
 	std::string direc;
-	//std::string direc ("datosTest");
-
 	std::cout << "Ingrese la ruta al archivo completa: ";
 	std::cin >> direc;
 	std::ifstream arch(direc);
@@ -94,7 +91,7 @@ void LecturaArch()
 
 }
 
-void FileFin()
+void GeneraArchFinal()
 {
 	EstacionMeteo estacion;
 
@@ -103,13 +100,13 @@ void FileFin()
 
 	std::vector<DatClima> datoTmp;
 	datoTmp = estacion.GetEstacion();
-	std::string nombre = Name (datoTmp);
+	std::string nombre = GeneraNombre (datoTmp);
 
-	estacion.OrdenaDatosViento();
-	estacion.WriteFile(nombre);
+	estacion.OrdenaPorViento();
+	estacion.EscribeArch(nombre);
 }
 
-std::string Name(std::vector<DatClima>& date)
+std::string GeneraNombre(std::vector<DatClima>& date)
 {
 	int aux = date.size() - 1;
 	std::string nombreFile;
