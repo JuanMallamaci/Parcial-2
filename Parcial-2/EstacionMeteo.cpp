@@ -59,7 +59,9 @@ void EstacionMeteo::LeeArch(const std::string& ruta)
 		this->SetEstacionMeteo(tmp);
 	}
 	arch.close();
+
 }
+
 void EstacionMeteo::WriteFile(const std::string& ruta)
 {
 	std::ofstream arch(ruta);
@@ -82,11 +84,6 @@ std::istream& operator>>(std::istream& in, EstacionMeteo& vec)
 
     in >> dato;
     vec.SetEstacionMeteo(dato);
-
-//    while (in >> dato)
-//    {
-//    	vec.SetEstacionMeteo(dato);
-//    }
     return in;
 }
 

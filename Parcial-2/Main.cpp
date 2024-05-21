@@ -7,8 +7,10 @@
 #include "Main.hpp"
 void LecturaTeclado();
 void LecturaArch();
+
 void FileFin();
 std::string Name(std::vector<DatClima>& date);
+
 
 Main::Main()
 {
@@ -65,6 +67,7 @@ void LecturaTeclado()
 
 void LecturaArch()
 {
+
 	std::string direc;
 	//std::string direc ("datosTest");
 
@@ -74,7 +77,7 @@ void LecturaArch()
 
 	if(!arch.is_open())
 	{
-		std::cerr << "Error abriendo archivo \n";
+		std::cerr << "Error abiendo archivo \n";
 	}
 
 	std::ofstream archWrite("lecturaDatos");
@@ -88,7 +91,9 @@ void LecturaArch()
 	}
 	archWrite.close();
 	arch.close();
+
 }
+
 void FileFin()
 {
 	EstacionMeteo estacion;
@@ -103,6 +108,7 @@ void FileFin()
 	estacion.OrdenaDatosViento();
 	estacion.WriteFile(nombre);
 }
+
 std::string Name(std::vector<DatClima>& date)
 {
 	int aux = date.size() - 1;
@@ -112,3 +118,5 @@ std::string Name(std::vector<DatClima>& date)
 	nombreFile = ss.str();
 	return nombreFile;
 }
+
+

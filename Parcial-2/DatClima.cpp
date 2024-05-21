@@ -45,7 +45,7 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	is >> h >> aux;
 	if(aux != delim)
 	{
-		throw std::invalid_argument("Formato de datos climaticos incorrecto");
+		throw std::invalid_argument("Dormato de datos climaticos incorrecto");
 	}
 	d.SetHora(h);
 
