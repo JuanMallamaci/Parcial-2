@@ -12,7 +12,7 @@
 
 #include "DatClima.hpp"
 #include "Fecha.hpp"
-#include "Menu.hpp"
+#include "Main.hpp"
 #include "EstacionMeteo.hpp"
 //Estructura para auxiliar en la lectura de un archivo especializado
 struct Experimento
@@ -62,26 +62,22 @@ char Screen2()
 	return 'd';
 }
 
-int main()
-{
-	try
-	{
-//
-//		Fecha f1;
-//		Hora h1;
-//		std::ifstream arch("RawDatosEstacionMeteo");
-//		arch >> f1;
-//		std::cout << f1;
-//		char a;
-//		arch >> a;
-//		arch >> h1;
-//		std::cout << h1;
+int main() {
 
+	try {
+		/*Fecha f1;
+		Hora h1;
+		std::ifstream arch("RawDatosEstacionMeteo");
+		arch >> f1;
+		std::cout << f1;
+		arch >> h1;
+		std::cout << h1;
 
 		EstacionMeteo e;
-		e.LecArch("RawDatosEstacionMeteo");
-		std::cout << e;
-
+		e.LeeArch("datosTest");
+		e.OrdenaDatos();
+		std::cout << e;*/
+		Main();
 	}
 	catch (std::exception& e)
 	{
@@ -91,12 +87,13 @@ int main()
 	{
 		std::cout << "\n" << e;
 	}
+		return 0;
 }
 
 int main2()
 {
-	/*
-	int number=7878;
+
+	/*int number=7878;
 	std::string test="SSSSS";
 	test += int2string(number);
 	std::cout << test << std::endl;
@@ -157,7 +154,7 @@ int main2()
 	}
 	//
 	ifArch.close();
-	ofArch.close();
-	*/
+	ofArch.close();*/
+
 	return 0;
 }
