@@ -27,14 +27,18 @@ public:
 
 	std::vector<DatClima> GetEstacion() const {return datos;}
 	DatClima GetEstacion(const int& idx) const {return datos[idx];}
-	int GetCantDatos() {return datos.size();}
+  
+	int GetCantDatos() {return datos.size() - 1;}
 
 	void SetDatos(float vel, float t, float mm, float hum, int a, int m, int d, int h, int mn);
 	void ClearEstacion() { datos.clear();}
 	std::vector<DatClima> RmEstacion(const int& idx);
-
 	void LeeArch(const std::string& ruta);
+	void WriteFile(const std::string& ruta);
+
 	void OrdenaDatos(){std::sort(datos.begin(),datos.end());}
+	static bool ComparaVelViento(const DatClima& a, const DatClima& b){return 	!(a.GetVeloViento() < b.GetVeloViento());}
+	void OrdenaDatosViento(){std::sort(datos.begin(),datos.end(),ComparaVelViento);}
 };
 std::istream& operator>>(std::istream& in,  EstacionMeteo& vec);
 std::ostream& operator<< (std::ostream& out, EstacionMeteo& vec);

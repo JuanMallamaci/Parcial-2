@@ -8,6 +8,10 @@
 void LecturaTeclado();
 void LecturaArch();
 
+void FileFin();
+std::string Name(std::vector<DatClima>& date);
+
+
 Main::Main()
 {
 	char key('0');
@@ -32,21 +36,7 @@ Main::Main()
 		}
 	}
 
-	EstacionMeteo estacion;
-
-	estacion.LeeArch("lecturaDatos");
-	estacion.OrdenaDatos();
-
-	std::vector<DatClima> datoTmp;
-	datoTmp = estacion.GetEstacion();
-	int aux = estacion.GetCantDatos();
-
-	std::string nombreFile;
-	std::stringstream ss;
-	ss << "VelViento" << datoTmp[0].GetVeloViento() << datoTmp[0].GetFecha().GetAnio() << "fin" << datoTmp[aux].GetVeloViento() << std::endl;
-	nombreFile = ss.str();
-	std::cout << nombreFile;
-
+	FileFin();
 }
 
 void LecturaTeclado()
@@ -77,11 +67,12 @@ void LecturaTeclado()
 
 void LecturaArch()
 {
-	//std::string direc;
-	std::string direc ("RawDatosEstacionMeteo");
+
+	std::string direc;
+	//std::string direc ("datosTest");
 
 	std::cout << "Ingrese la ruta al archivo completa: ";
-//	std::cin >> direc;
+	std::cin >> direc;
 	std::ifstream arch(direc);
 
 	if(!arch.is_open())
@@ -102,4 +93,30 @@ void LecturaArch()
 	arch.close();
 
 }
+
+void FileFin()
+{
+	EstacionMeteo estacion;
+
+	estacion.LeeArch("lecturaDatos");
+	estacion.OrdenaDatos();
+
+	std::vector<DatClima> datoTmp;
+	datoTmp = estacion.GetEstacion();
+	std::string nombre = Name (datoTmp);
+
+	estacion.OrdenaDatosViento();
+	estacion.WriteFile(nombre);
+}
+
+std::string Name(std::vector<DatClima>& date)
+{
+	int aux = date.size() - 1;
+	std::string nombreFile;
+	std::stringstream ss;
+	ss << "VelViento" << date[0].GetFecha() << "inicio" << date[aux].GetFecha() << "fin.dat" << std::endl;
+	nombreFile = ss.str();
+	return nombreFile;
+}
+
 

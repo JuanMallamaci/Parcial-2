@@ -13,7 +13,6 @@
 
 bool DatClima::operator < (const DatClima& date)
 {
-
 	if(fecha != date.GetFecha())
 	{
 		return (fecha < date.GetFecha());
@@ -38,7 +37,7 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	is >> f >> aux;
 	if(aux != delim)
 	{
-		throw std::invalid_argument("Dormato de datos climaticos incorrecto");
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
 	}
 	d.SetFecha(f);
 
@@ -54,7 +53,7 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	is >> veloViento >> aux;
 	if(aux != delim)
 	{
-		throw std::invalid_argument("Dormato de datos climaticos incorrecto");
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
 	}
 	d.SetVeloViento(veloViento);
 
@@ -63,7 +62,7 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	is >> temp >> aux;
 	if(aux != delim)
 	{
-		throw std::invalid_argument("Dormato de datos climaticos incorrecto");
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
 	}
 	d.SetTemp(temp);
 
@@ -71,7 +70,7 @@ std::istream& operator>> (std::istream& is , DatClima& d)
 	is >> humedadRela >> aux;
 	if(aux != delim)
 	{
-		throw std::invalid_argument("Dormato de datos climaticos incorrecto");
+		throw std::invalid_argument("Formato de datos climaticos incorrecto");
 	}
 	d.SetHumedadRela(humedadRela);
 
